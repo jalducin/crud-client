@@ -1,0 +1,5 @@
+com\jvav\crudclient\controller\ClienteController.class
+com\jvav\crudclient\model\Cliente.class
+com\jvav\crudclient\model\Cliente$TipoCliente.class
+com\jvav\crudclient\model\TipoCliente.class
+com\jvav\crudclient\CrudClientApplication.class

@@ -1,0 +1,77 @@
+openapi: "2.0"
+info:
+  description: "CRUD API for Clientes using Spring Boot"
+  version: "1.0.0"
+  title: "Cliente API"
+host: "localhost:8082"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /clientes:
+    get:
+      summary: "Listar todos los clientes"
+      responses:
+        200:
+          description: "Operación exitosa"
+    post:
+      summary: "Crear cliente"
+      parameters:
+        - in: "body"
+          name: "cliente"
+          required: true
+          schema:
+            $ref: "#/definitions/Cliente"
+      responses:
+        201:
+          description: "Cliente creado"
+  /clientes/{id}:
+    get:
+      summary: "Obtener cliente por ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Cliente encontrado"
+    put:
+      summary: "Actualizar cliente"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "cliente"
+          schema:
+            $ref: "#/definitions/Cliente"
+      responses:
+        200:
+          description: "Cliente actualizado"
+    delete:
+      summary: "Eliminar cliente"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Cliente eliminado"
+definitions:
+  Cliente:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      nombre:
+        type: "string"
+      email:
+        type: "string"
+      edad:
+        type: "integer"
+      tipoCliente:
+        type: "string"
+        enum: ["VIP", "REGULAR"]

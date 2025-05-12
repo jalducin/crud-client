@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.jvav.crudclient.CrudClientApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.595 s -- in com.jvav.crudclient.CrudClientApplicationTests
