@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: API CRUD Cliente
+  description: API para la gestión de clientes usando Spring Boot, Java 21 y H2.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8082
+paths:
+  /api/clientes:
+    get:
+      summary: Obtener todos los clientes
+      responses:
+        '200':
+          description: Lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+    post:
+      summary: Crear un nuevo cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+      responses:
+        '201':
+          description: Cliente creado
+  /api/clientes/{id}:
+    get:
+      summary: Obtener un cliente por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          description: Cliente no encontrado
+    put:
+      summary: Actualizar un cliente existente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+      responses:
+        '200':
+          description: Cliente actualizado
+    delete:
+      summary: Eliminar un cliente por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Cliente eliminado
+components:
+  schemas:
+    Cliente:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        email:
+          type: string
+        edad:
+          type: integer
+        tipoCliente:
+          type: string
+          enum:
+            - REGULAR
+            - VIP
